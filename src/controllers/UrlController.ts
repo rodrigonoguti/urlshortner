@@ -31,7 +31,7 @@ class UrlController {
 
     if (urlAlreadyExists) {
       return res.json({
-        newUrl: `${process.env.BASE_URL}/${urlAlreadyExists.shortUrl}`
+        newUrl: `${process.env.BASE_URL}:${process.env.PORT}/${urlAlreadyExists.shortUrl}`
       });
     }
 
@@ -47,7 +47,7 @@ class UrlController {
     await urlsRepository.save(urlObj);
 
     return res.json({
-      newUrl: `${process.env.BASE_URL}/${shortUrl}`
+      newUrl: `${process.env.BASE_URL}:${process.env.PORT}/${shortUrl}`
     });
   }
 }
