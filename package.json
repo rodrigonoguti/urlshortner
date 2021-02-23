@@ -4,8 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "tsc -p . && ts-node build/server.js",
-    "build": "tsc -p .",
+    "start": "ts-node-dev --transpile-only --ignore-watch node_modules src/server.ts",
     "dev": "ts-node-dev --transpile-only --ignore-watch node_modules src/server.ts",
     "typeorm": "ts-node-dev node_modules/typeorm/cli.js"
   },
@@ -17,6 +16,7 @@
     "reflect-metadata": "^0.1.13",
     "typeorm": "^0.2.31",
     "uuid": "^8.3.2",
+    "ts-node-dev": "^1.1.1",
     "typescript": "^4.1.5"
   },
   "devDependencies": {
