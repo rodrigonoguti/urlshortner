@@ -8,7 +8,8 @@ To install and run the API:
   - BASE_URL: your app base URL, like http://localhost:8080
   - PORT: your app port, like 8080
   - DATABASE_URL: your database string connection
-- npm install
-- npm run start
+- Install dependencies with: npm install
+- Run the migrations with: npm typeorm migration:run
+- Run on terminal: npm run start
 
 See [Postman Documentation](https://documenter.getpostman.com/view/1804582/TWDZJc4r)
