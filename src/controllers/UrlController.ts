@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { getRepository } from "typeorm";
 import { Url } from "../models/Url";
 import { nanoid } from "nanoid";
+import * as yup from 'yup';
 
 class UrlController {
 
@@ -23,6 +24,24 @@ class UrlController {
 
   async create(req: Request, res: Response) {
     const { url } = req.body;
+
+    const schema = yup.object().shape({
+          url: yup
+                .string()
+                .matches(
+                    /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/,
+                    'Url inválida'
+                )
+                .required("Url é obrigatória")
+        });
+
+    try {
+      await schema.validate(req.body);
+    } catch (error) {
+      return res.status(400).json({
+        error: error.message
+      });
+    }
 
     const urlsRepository = getRepository(Url);
 
