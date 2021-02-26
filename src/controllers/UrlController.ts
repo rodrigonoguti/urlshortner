@@ -26,14 +26,14 @@ class UrlController {
     const { url } = req.body;
 
     const schema = yup.object().shape({
-          url: yup
-                .string()
-                .matches(
-                    /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/,
-                    'Url inválida'
-                )
-                .required("Url é obrigatória")
-        });
+      url: yup
+        .string()
+        .matches(
+          /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/,
+          'Url inválida'
+        )
+        .required("Url é obrigatória")
+    });
 
     try {
       await schema.validate(req.body);
@@ -49,7 +49,7 @@ class UrlController {
     const urlAlreadyExists = await urlsRepository.findOne({ originalUrl: url });
 
     if (urlAlreadyExists) {
-      return res.json({
+      return res.status(200).json({
         newUrl: `${process.env.BASE_URL}/${urlAlreadyExists.shortUrl}`
       });
     }

@@ -1,6 +1,6 @@
 import { createConnection } from "typeorm";
 
-createConnection({
+export default createConnection({
   type: 'postgres',
   url: process.env.DATABASE_URL,
   ssl: true,
