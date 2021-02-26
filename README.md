@@ -1,4 +1,4 @@
-# urlshortener
+# url shortener
 
 Just a simple URL shortener :)
 
