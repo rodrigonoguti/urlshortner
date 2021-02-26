@@ -10,6 +10,7 @@ To install and run the API:
   - DATABASE_URL: your database string connection
 - Install dependencies with: npm install
 - Run the migrations with: npm typeorm migration:run
-- Run on terminal: npm run start
+- To run the tests, run on terminal: npm run test
+- To start, run on terminal: npm run start
 
 See [Postman Documentation](https://documenter.getpostman.com/view/1804582/TWDZJc4r)
